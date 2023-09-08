@@ -77,6 +77,12 @@ DEFAULT_PAD_TOKEN = "[PAD]"
 
 @dataclass
 class ModelArguments:
+    """
+    By default, the EleutherAI/pythia-12b model is used, but we can also use other Decoder-only models. 
+    like EleutherAI/gpt-neo-2.7B, EleutherAI/gpt-j-6b, etc. for testing, training, and inference.
+    trust_remote_code is to enable any code that comes with the model, use it with caution, some models come with scripts.
+    It seems that it needs to be linked with the code on the Hub to get the correct result.
+    """
     model_name_or_path: Optional[str] = field(
         default="EleutherAI/pythia-12b"
     )
