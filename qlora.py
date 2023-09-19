@@ -97,6 +97,7 @@ class ModelArguments:
 
 @dataclass
 class DataArguments:
+    # evaluate dataset size
     eval_dataset_size: int = field(
         default=1024, metadata={"help": "Size of validation dataset."}
     )
@@ -107,6 +108,7 @@ class DataArguments:
             "value if set."
         },
     )
+    # like max_train_samples
     max_eval_samples: Optional[int] = field(
         default=None,
         metadata={
@@ -114,14 +116,17 @@ class DataArguments:
             "value if set."
         },
     )
+    # max input token size
     source_max_len: int = field(
         default=1024,
         metadata={"help": "Maximum source sequence length. Sequences will be right padded (and possibly truncated)."},
     )
+    # max output token size
     target_max_len: int = field(
         default=256,
         metadata={"help": "Maximum target sequence length. Sequences will be right padded (and possibly truncated)."},
     )
+    # default fine-tune data, if alpaca can try Chinese input/output
     dataset: str = field(
         default='alpaca',
         metadata={"help": "Which dataset to finetune on. See datamodule for options."}
